@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<title>예상 면접 질문지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#EDF1F7;--sheet:#FFFFFF;--ink:#1B2436;--muted:#5B677D;--rule:#DCE3EE;--margin:#C3D3F2;
+  --pen:#2A55C8;--marker:#FFE45C;--field:#FFFFFF;--field-line:#C5CFDE;--focus:#2A55C8;--danger:#A8251C;
+  --shadow:0 1px 0 #D3DBE8,0 14px 30px -20px rgba(27,52,110,.45);
+  --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+  --pen-font:"Nanum Pen Script","Apple SD Gothic Neo","Malgun Gothic",cursive;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10151F;--sheet:#1A2130;--ink:#E4E9F2;--muted:#9AA5B9;--rule:#2B3446;--margin:#34466E;
+    --pen:#93B2FF;--marker:rgba(224,196,60,.42);--field:#141A26;--field-line:#394359;--focus:#93B2FF;--danger:#FF8A80;
+    --shadow:0 1px 0 #0B0F17,0 14px 30px -20px rgba(0,0,0,.7);color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10151F;--sheet:#1A2130;--ink:#E4E9F2;--muted:#9AA5B9;--rule:#2B3446;--margin:#34466E;
+  --pen:#93B2FF;--marker:rgba(224,196,60,.42);--field:#141A26;--field-line:#394359;--focus:#93B2FF;--danger:#FF8A80;
+  --shadow:0 1px 0 #0B0F17,0 14px 30px -20px rgba(0,0,0,.7);color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere}
+[hidden]{display:none !important}
+img,svg{max-width:100%}
+
+/* the question sheet: a legal-pad page with an interviewer's pen notes */
+.sheet{position:relative;background:var(--sheet);border-radius:4px;box-shadow:var(--shadow);padding:28px 24px 26px 72px}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:56px;width:1px;background:var(--margin)}
+.sheet-booth{margin:0 0 2px;font-size:13px;color:var(--muted)}
+.sheet-title{margin:0;font-size:24px;line-height:1.3;font-weight:700;letter-spacing:-.01em}
+.sheet-meta{margin:6px 0 0;color:var(--muted);font-size:14px}
+.sheet-comment{margin:16px 0 0;font-family:var(--pen-font);font-size:26px;line-height:1.2;color:var(--pen);transform:rotate(-.6deg);transform-origin:left center}
+.q-list{list-style:none;margin:18px 0 0;padding:0;border-top:1px solid var(--rule)}
+.q-item{position:relative;padding:14px 0;border-bottom:1px solid var(--rule)}
+.q-num{position:absolute;left:-64px;width:44px;text-align:right;top:15px;font-size:14px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.q-cat{display:inline-block;font-size:13px;font-weight:700;padding:0 3px;background:linear-gradient(transparent 50%,var(--marker) 50%,var(--marker) 94%,transparent 94%)}
+.q-text{margin:3px 0 0;font-size:17px;line-height:1.55;font-weight:500}
+.q-note{margin:4px 0 0;font-family:var(--pen-font);font-size:22px;line-height:1.2;color:var(--pen)}
+@media (max-width:520px){
+  .sheet{padding:22px 16px 20px 52px}
+  .sheet::before{left:40px}
+  .q-num{left:-48px;width:32px}
+  .sheet-title{font-size:21px}
+}
+.visitor{max-width:680px;margin:0 auto;padding:16px 12px 40px}
+.visitor-foot{padding:20px 8px 0;font-size:14px;color:var(--muted)}
+.visitor-foot h2{font-size:15px;color:var(--ink);margin:0 0 4px}
+.visitor-foot p{margin:0 0 14px}
+.pen-big{font-family:var(--pen-font);font-size:34px;color:var(--pen);line-height:1.15;margin:18px 0 0}
+.diag{margin:14px 0 0;font-size:12px;color:var(--muted)}
+.version{text-align:center;font-size:12px;color:var(--muted);margin:24px 0 0}
+</style>
+</head>
+<body>
+<main class="visitor">
+  <article class="sheet" id="sheet">
+    <h2 class="sheet-title">질문지를 여는 중이에요</h2>
+    <p class="sheet-meta" id="fallbackMsg">이 글자가 계속 보이면 이 브라우저에서 질문지를 열지 못한 거예요. 휴대폰 기본 카메라로 QR을 다시 찍어서 Safari나 Chrome으로 열어 주세요.</p>
+    <noscript><p class="sheet-meta">이 브라우저는 스크립트가 꺼져 있어서 질문지를 보여줄 수 없어요.</p></noscript>
+  </article>
+  <footer class="visitor-foot" id="foot" hidden>
+    <h2>답변 준비는 이렇게</h2>
+    <p>질문 아래 파란 글씨는 면접관이 그 질문으로 확인하려는 목적이에요. 목적을 떠올리면서, 어떤 상황이었는지, 내가 무엇을 했는지, 결과가 어땠는지 순서로 30초 안에 말해 보세요.</p>
+    <p>이 질문지는 QR 링크 안에만 들어 있고, 이 사이트는 내용을 받지도 저장하지도 않아요. 나중에 다시 보려면 지금 화면을 캡처해 두세요.</p>
+  </footer>
+  <p class="version">질문지 사이트 v3</p>
+</main>
+<script>
+// If anything below fails, say so on the page instead of leaving it blank.
+window.onerror = function(msg){
+  var s = document.getElementById("sheet");
+  if (!s || s.getAttribute("data-ok") === "1") return;
+  s.innerHTML = "";
+  var h = document.createElement("h2"); h.className = "sheet-title"; h.textContent = "질문지를 보여주지 못했어요";
+  var p = document.createElement("p"); p.className = "sheet-meta"; p.textContent = "휴대폰 기본 카메라로 QR을 다시 찍어서 Safari나 Chrome으로 열어 주세요.";
+  var d = document.createElement("p"); d.className = "diag"; d.textContent = "오류 내용: " + String(msg).slice(0, 160);
+  s.appendChild(h); s.appendChild(p); s.appendChild(d);
+};
+</script>
+<script>
+/*! lz-string v1.5.0 | MIT License | pieroxy */
+var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",n="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$",e={};function t(r,o){if(!e[r]){e[r]={};for(var n=0;n<r.length;n++)e[r][r.charAt(n)]=n}return e[r][o]}var i={compressToBase64:function(r){if(null==r)return"";var n=i._compress(r,6,function(r){return o.charAt(r)});switch(n.length%4){default:case 0:return n;case 1:return n+"===";case 2:return n+"==";case 3:return n+"="}},decompressFromBase64:function(r){return null==r?"":""==r?null:i._decompress(r.length,32,function(n){return t(o,r.charAt(n))})},compressToUTF16:function(o){return null==o?"":i._compress(o,15,function(o){return r(o+32)})+" "},decompressFromUTF16:function(r){return null==r?"":""==r?null:i._decompress(r.length,16384,function(o){return r.charCodeAt(o)-32})},compressToUint8Array:function(r){for(var o=i.compress(r),n=new Uint8Array(2*o.length),e=0,t=o.length;e<t;e++){var s=o.charCodeAt(e);n[2*e]=s>>>8,n[2*e+1]=s%256}return n},decompressFromUint8Array:function(o){if(null==o)return i.decompress(o);for(var n=new Array(o.length/2),e=0,t=n.length;e<t;e++)n[e]=256*o[2*e]+o[2*e+1];var s=[];return n.forEach(function(o){s.push(r(o))}),i.decompress(s.join(""))},compressToEncodedURIComponent:function(r){return null==r?"":i._compress(r,6,function(r){return n.charAt(r)})},decompressFromEncodedURIComponent:function(r){return null==r?"":""==r?null:(r=r.replace(/ /g,"+"),i._decompress(r.length,32,function(o){return t(n,r.charAt(o))}))},compress:function(o){return i._compress(o,16,function(o){return r(o)})},_compress:function(r,o,n){if(null==r)return"";var e,t,i,s={},u={},a="",p="",c="",l=2,f=3,h=2,d=[],m=0,v=0;for(i=0;i<r.length;i+=1)if(a=r.charAt(i),Object.prototype.hasOwnProperty.call(s,a)||(s[a]=f++,u[a]=!0),p=c+a,Object.prototype.hasOwnProperty.call(s,p))c=p;else{if(Object.prototype.hasOwnProperty.call(u,c)){if(c.charCodeAt(0)<256){for(e=0;e<h;e++)m<<=1,v==o-1?(v=0,d.push(n(m)),m=0):v++;for(t=c.charCodeAt(0),e=0;e<8;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1}else{for(t=1,e=0;e<h;e++)m=m<<1|t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t=0;for(t=c.charCodeAt(0),e=0;e<16;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1}0==--l&&(l=Math.pow(2,h),h++),delete u[c]}else for(t=s[c],e=0;e<h;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1;0==--l&&(l=Math.pow(2,h),h++),s[p]=f++,c=String(a)}if(""!==c){if(Object.prototype.hasOwnProperty.call(u,c)){if(c.charCodeAt(0)<256){for(e=0;e<h;e++)m<<=1,v==o-1?(v=0,d.push(n(m)),m=0):v++;for(t=c.charCodeAt(0),e=0;e<8;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1}else{for(t=1,e=0;e<h;e++)m=m<<1|t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t=0;for(t=c.charCodeAt(0),e=0;e<16;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1}0==--l&&(l=Math.pow(2,h),h++),delete u[c]}else for(t=s[c],e=0;e<h;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1;0==--l&&(l=Math.pow(2,h),h++)}for(t=2,e=0;e<h;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1;for(;;){if(m<<=1,v==o-1){d.push(n(m));break}v++}return d.join("")},decompress:function(r){return null==r?"":""==r?null:i._decompress(r.length,32768,function(o){return r.charCodeAt(o)})},_decompress:function(o,n,e){var t,i,s,u,a,p,c,l=[],f=4,h=4,d=3,m="",v=[],g={val:e(0),position:n,index:1};for(t=0;t<3;t+=1)l[t]=t;for(s=0,a=Math.pow(2,2),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;switch(s){case 0:for(s=0,a=Math.pow(2,8),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;c=r(s);break;case 1:for(s=0,a=Math.pow(2,16),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;c=r(s);break;case 2:return""}for(l[3]=c,i=c,v.push(c);;){if(g.index>o)return"";for(s=0,a=Math.pow(2,d),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;switch(c=s){case 0:for(s=0,a=Math.pow(2,8),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;l[h++]=r(s),c=h-1,f--;break;case 1:for(s=0,a=Math.pow(2,16),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;l[h++]=r(s),c=h-1,f--;break;case 2:return v.join("")}if(0==f&&(f=Math.pow(2,d),d++),l[c])m=l[c];else{if(c!==h)return null;m=i+i.charAt(0)}v.push(m),l[h++]=i+m.charAt(0),i=m,0==--f&&(f=Math.pow(2,d),d++)}}};return i}();"function"==typeof define&&define.amd?define(function(){return LZString}):"undefined"!=typeof module&&null!=module?module.exports=LZString:"undefined"!=typeof angular&&null!=angular&&angular.module("LZString",[]).factory("LZString",function(){return LZString});
+</script>
+<script>
+(function(){
+var CATS = ["성격", "경험", "직무", "압박"];
+var B43 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$*+-./:";
+
+function b43dec(str){
+  var out = [];
+  function idx(ch){ var k = B43.indexOf(ch); if (k < 0) throw new Error("bad char"); return k; }
+  for (var i = 0; i < str.length; i += 3){
+    var ch = str.slice(i, i + 3);
+    if (ch.length === 3){
+      var n = idx(ch.charAt(0)) + idx(ch.charAt(1)) * 43 + idx(ch.charAt(2)) * 1849;
+      if (n > 65535) throw new Error("bad chunk");
+      out.push(n >> 8, n & 255);
+    } else if (ch.length === 2){
+      out.push(idx(ch.charAt(0)) + idx(ch.charAt(1)) * 43);
+    } else throw new Error("bad length");
+  }
+  return new Uint8Array(out);
+}
+function getRaw(){
+  var h = location.hash || "";
+  if (h.charAt(0) === "#") h = h.slice(1);
+  try { h = decodeURIComponent(h); } catch (e) {}
+  h = h.replace(/\s+/g, "");
+  var k = h.indexOf("Q");
+  return k >= 0 ? h.slice(k) : h;
+}
+function decodePayload(s){
+  if (s.charAt(0) !== "Q") throw new Error("no marker");
+  var json = LZString.decompressFromUint8Array(b43dec(s.slice(1)));
+  if (!json) throw new Error("cut off");
+  var p = JSON.parse(json);
+  if (!p || !(p.q instanceof Array)) throw new Error("no questions");
+  return p;
+}
+
+function clear(node){ while (node.firstChild) node.removeChild(node.firstChild); }
+function el(tag, cls, text){
+  var e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = String(text);
+  return e;
+}
+function add(parent, child){ parent.appendChild(child); return child; }
+
+function renderSheet(root, p){
+  clear(root);
+  if (p.b) add(root, el("p", "sheet-booth", p.b));
+  add(root, el("h2", "sheet-title", (p.n || "방문자") + "님의 예상 면접 질문"));
+  var meta = [];
+  if (p.d) meta.push(p.d);
+  if (p.f) meta.push("관심 분야는 " + p.f);
+  if (meta.length) add(root, el("p", "sheet-meta", meta.join(", ")));
+  if (p.m) add(root, el("p", "sheet-comment", "\u201C" + p.m + "\u201D"));
+  var ol = add(root, el("ol", "q-list"));
+  for (var i = 0; i < p.q.length; i++){
+    var q = p.q[i] || [];
+    var li = add(ol, el("li", "q-item"));
+    add(li, el("span", "q-num", "Q" + (i + 1)));
+    add(li, el("span", "q-cat", CATS[q[0]] || "질문"));
+    add(li, el("p", "q-text", q[1] || ""));
+    if (q[2]) add(li, el("p", "q-note", "목적: " + q[2]));
+  }
+}
+function message(root, title, body, diag){
+  clear(root);
+  add(root, el("h2", "sheet-title", title));
+  add(root, el("p", "sheet-meta", body));
+  if (diag) add(root, el("p", "diag", diag));
+}
+
+function show(){
+  var sheet = document.getElementById("sheet"), foot = document.getElementById("foot");
+  var raw = getRaw();
+  foot.hidden = true;
+  if (!raw){
+    message(sheet, "예상 면접 질문지",
+      "부스에서 받은 QR을 휴대폰 카메라로 찍으면 여기에 내 질문지가 열려요. QR을 찍었는데도 이 화면이 보이면, 사용한 QR 앱이 링크의 # 뒷부분을 잘라낸 거예요. 휴대폰 기본 카메라로 다시 찍어 주세요.");
+    add(sheet, el("p", "pen-big", "QR을 찍어 주세요"));
+  } else {
+    try {
+      var p = decodePayload(raw);
+      renderSheet(sheet, p);
+      document.title = (p.n || "방문자") + "님의 예상 면접 질문";
+      foot.hidden = false;
+    } catch (e) {
+      message(sheet, "질문지를 열 수 없어요",
+        "QR이 끝까지 읽히지 않았어요. 부스 화면의 QR을 크게 띄운 뒤 휴대폰 기본 카메라로 다시 찍어 주세요.",
+        "받은 길이 " + raw.length + "자, " + (e && e.message ? e.message : "decode error"));
+    }
+  }
+  sheet.setAttribute("data-ok", "1");
+}
+if (window.addEventListener) window.addEventListener("hashchange", show, false);
+show();
+})();
+</script>
+</body>
+</html>
