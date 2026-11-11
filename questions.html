@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="referrer" content="no-referrer">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="noindex, nofollow">
 <title>예상 면접 질문지</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,6 +51,9 @@ img,svg{max-width:100%}
 .q-item{position:relative;padding:14px 0;border-bottom:1px solid var(--rule)}
 .q-num{position:absolute;left:-64px;width:44px;text-align:right;top:15px;font-size:14px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
 .q-cat{display:inline-block;font-size:13px;font-weight:700;padding:0 3px;background:linear-gradient(transparent 50%,var(--marker) 50%,var(--marker) 94%,transparent 94%)}
+.q-cat-pop{--marker:#FFB8CC}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .q-cat-pop{--marker:rgba(255,128,165,.45)}}
+:root[data-theme="dark"] .q-cat-pop{--marker:rgba(255,128,165,.45)}
 .q-text{margin:3px 0 0;font-size:17px;line-height:1.55;font-weight:500}
 .q-note{margin:4px 0 0;font-family:var(--pen-font);font-size:22px;line-height:1.2;color:var(--pen)}
 @media (max-width:520px){
@@ -65,6 +68,12 @@ img,svg{max-width:100%}
 .visitor-foot p{margin:0 0 14px}
 .pen-big{font-family:var(--pen-font);font-size:34px;color:var(--pen);line-height:1.15;margin:18px 0 0}
 .diag{margin:14px 0 0;font-size:12px;color:var(--muted)}
+.rate{margin:16px 0 0;padding:14px 12px;border:1px solid var(--rule);border-radius:10px;background:var(--sheet)}
+.rate p{margin:0 0 10px;font-weight:700;font-size:15px}
+.rate-btns{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.rate-ends{display:flex;justify-content:space-between;margin:6px 2px 0;font-size:12px;color:var(--muted)}
+.rate-btns button{font:inherit;font-size:18px;font-weight:700;line-height:1.3;min-height:48px;border:1px solid var(--field-line,#C5CFDE);background:var(--sheet);color:var(--ink);border-radius:10px;padding:10px 4px;cursor:pointer}
+.rate-thanks{margin:0;color:var(--muted);font-size:14px}
 .pdf-bar{margin:16px 0 0;padding:0 4px;display:flex;flex-direction:column;gap:8px}
 .btn{font:inherit;font-weight:700;font-size:16px;line-height:1.3;border-radius:10px;padding:14px 18px;border:1px solid var(--ink);background:var(--ink);color:var(--sheet);cursor:pointer;width:100%}
 .btn:disabled{opacity:.6;cursor:default}
@@ -82,6 +91,18 @@ img,svg{max-width:100%}
     <p class="sheet-meta" id="fallbackMsg">이 글자가 계속 보이면 이 브라우저에서 질문지를 열지 못한 거예요. 휴대폰 기본 카메라로 QR을 다시 찍어서 Safari나 Chrome으로 열어 주세요.</p>
     <noscript><p class="sheet-meta">이 브라우저는 스크립트가 꺼져 있어서 질문지를 보여줄 수 없어요.</p></noscript>
   </article>
+  <section class="rate" id="rate" hidden aria-labelledby="rateQ">
+    <p id="rateQ">이 질문지, 면접 준비에 도움이 될 것 같나요?</p>
+    <div class="rate-btns" id="rateBtns" role="group" aria-label="1점부터 5점까지">
+      <button type="button" data-score="1" aria-label="1점, 전혀 아니에요">1</button>
+      <button type="button" data-score="2" aria-label="2점">2</button>
+      <button type="button" data-score="3" aria-label="3점">3</button>
+      <button type="button" data-score="4" aria-label="4점">4</button>
+      <button type="button" data-score="5" aria-label="5점, 매우 그래요">5</button>
+    </div>
+    <div class="rate-ends" id="rateEnds" aria-hidden="true"><span>전혀 아니에요</span><span>매우 그래요</span></div>
+    <p class="rate-thanks" id="rateThanks" hidden>알려주셔서 고마워요!</p>
+  </section>
   <div class="pdf-bar" id="pdfBar" hidden>
     <button class="btn" type="button" id="pdfBtn">PDF로 저장하기</button>
     <p class="pdf-status" id="pdfStatus" role="status" aria-live="polite"></p>
@@ -89,10 +110,10 @@ img,svg{max-width:100%}
   </div>
   <footer class="visitor-foot" id="foot" hidden>
     <h2>답변 준비는 이렇게</h2>
-    <p>질문 아래 파란 글씨는 면접관이 그 질문으로 확인하려는 목적이에요. 목적을 떠올리면서, 어떤 상황이었는지, 내가 무엇을 했는지, 결과가 어땠는지 순서로 30초 안에 말해 보세요.</p>
-    <p>이 질문지는 QR 링크 안에만 들어 있고, 이 사이트는 내용을 받지도 저장하지도 않아요. 나중에 다시 보려면 PDF로 저장하거나 지금 화면을 캡처해 두세요.</p>
+    <p>질문 아래 파란 글씨는 면접관이 그 질문으로 확인하려는 목적이에요. 목적을 떠올리면서, 어떤 상황이었는지, 내가 무엇을 했는지, 결과가 어땠는지 순서로 30초 안에 말해 보세요. 분홍색 기습 질문은 정답이 없으니, 웃으면서 떠오르는 대로 말해 보세요.</p>
+    <p>이 질문지 내용은 어디에도 저장되지 않아요. 부스 운영을 돌아보기 위해 학과와 관심 분야, 질문지를 열어본 횟수, 만족도만 이름 없이 통계로 모아요. 나중에 다시 보려면 PDF로 저장하거나 지금 화면을 캡처해 두세요.</p>
   </footer>
-  <p class="version">질문지 사이트 v4</p>
+  <p class="version">질문지 사이트 v7</p>
 </main>
 <script>
 // If anything below fails, say so on the page instead of leaving it blank.
@@ -112,7 +133,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 </script>
 <script>
 (function(){
-var CATS = ["성격", "경험", "직무", "압박"];
+var CATS = ["성격", "경험", "직무", "압박", "기습"];
 var B43 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$*+-./:";
 
 function b43dec(str){
@@ -138,12 +159,59 @@ function getRaw(){
   var k = h.indexOf("Q");
   return k >= 0 ? h.slice(k) : h;
 }
+var SURPRISE = [
+  "막차를 놓쳤는데 지갑에 3,000원뿐이고 휴대폰 배터리는 5%예요. 오늘 밤 어떻게 집에 가시겠어요?",
+  "친구에게 보내려던 \"오늘 수업 진짜 지루했다\"를 교수님께 보냈어요. 어떻게 수습하시겠어요?",
+  "친구 결혼식에 갔더니 축가 가수가 안 왔다며 5분 뒤에 대신 불러달래요. 어떻게 하시겠어요?",
+  "편의점 아르바이트 첫날, 계산대가 멈췄는데 손님 다섯 명이 줄 서 있어요. 어떻게 하시겠어요?",
+  "처음 간 미용실에서 머리가 마음에 안 들게 잘렸어요. 서로 기분 상하지 않게 어떻게 말하시겠어요?",
+  "말이 전혀 안 통하는 외국 식당에서 \"덜 맵게 해주세요\"를 몸짓으로만 전해야 해요. 지금 해 보세요.",
+  "마트에서 마지막 남은 1+1 상품을 다른 손님과 동시에 잡았어요. 어떻게 하시겠어요?",
+  "식당에서 주문과 다른 메뉴가 나왔는데, 그게 더 맛있어 보여요. 어떻게 하시겠어요?",
+  "친구 결혼식 사회를 갑자기 맡게 됐는데, 신랑 신부 이름만 알아요. 첫 멘트를 지금 해 보세요.",
+  "30명 단톡방에 모임 공지를 올렸는데 아무도 답이 없어요. 다들 오게 만드는 다음 메시지를 지금 말해 보세요.",
+  "100만 원이 생겼는데 오늘 안에 다 써야 해요. 가장 후회 없을 사용 계획을 말해 보세요.",
+  "10억이 생겼는데 나를 위해서는 한 푼도 쓰면 안 된대요. 어디에, 어떻게 쓰시겠어요?",
+  "5만 원으로 하루 여행 코스를 짜 보세요. 어디서 출발해서 어디서 끝날까요?",
+  "10만 원으로 일주일 식비를 버텨야 해요. 식단 계획을 말해 보세요.",
+  "가장 고마운 사람에게 10만 원으로 최고의 하루를 선물한다면 어떻게 하시겠어요?",
+  "친구 집들이에 빈손으로 가는 중이에요. 집 앞 편의점에서 1만 원으로 최고의 선물을 만들어 보세요.",
+  "동아리 MT를 20명, 예산 50만 원으로 1박 2일 기획해 보세요.",
+  "1년 동안 스마트폰 없이 살면 1억을 준대요. 하시겠어요? 한다면 어떻게 버틸지 말해 보세요.",
+  "1,000원으로 지금 옆에 있는 사람을 가장 행복하게 만드는 방법은요?",
+  "복권 1등에 당첨됐는데 딱 한 사람에게만 말할 수 있어요. 누구에게, 어떤 방법으로 알리시겠어요?",
+  "이 볼펜을 지금 지나가는 사람에게 5만 원에 팔아 보세요.",
+  "지금 신고 있는 신발을 홈쇼핑 쇼호스트처럼 1분 동안 팔아 보세요.",
+  "'월요일 수업 없애기'를 총학생회 안건으로 올린다고 생각하고 30초 동안 설득해 보세요.",
+  "김치를 처음 보는 외국인 친구가 한 입 먹어 보도록 설득해 보세요.",
+  "우리 동네 단골 맛집을 1분 동안 광고해 보세요.",
+  "외국인 친구에게 내가 사는 동네로 놀러 오라고 설득해 보세요.",
+  "냉장고에 계란, 콜라, 김밖에 없어요. 요리 이름을 붙이고, 손님에게 내놓는 멘트까지 해 보세요.",
+  "집에 있는 물건 두 개를 합쳐서 신제품을 만들고 팔아 보세요.",
+  "이 부스를 30초 만에 사람들로 꽉 채울 방법을 말해 보세요.",
+  "새 공휴일을 하나 만든다면 이름, 날짜, 그날 하는 일까지 정해서 설득해 보세요.",
+  "나를 편의점 신상품으로 출시한다면 이름, 가격, 진열 위치는 어떻게 정하고, 왜인가요?",
+  "내 이름을 단 라면이 나온다면 무슨 맛이고, 광고 문구는 뭘까요? 그 맛인 이유도 말해 보세요.",
+  "내 사용설명서를 쓴다면 주의사항 세 가지와 고장 났을 때 고치는 법은요?",
+  "나를 중고거래 앱에 올린다면 제목, 가격, 상품 설명을 지금 말해 보세요.",
+  "나를 놀이공원 놀이기구로 만든다면 이름, 탑승 제한, 인기 비결은요?",
+  "내 하루를 브이로그로 올린다면 제목과 썸네일 문구는요? 조회수가 잘 나올 것 같나요?",
+  "나를 카페 신메뉴로 출시한다면 이름, 재료, 추천 대상은요?",
+  "내가 동네에 가게를 연다면 무슨 가게이고, 망하지 않을 비결은요?",
+  "친구들이 내 생일 파티 주제를 '나'로 정했대요. 장식과 음식은 어떻게 될까요?",
+  "내 인생을 영화로 만든다면 제목과 장르는요? 그리고 지금은 몇 분쯤 지난 장면일까요?"
+];
+var SURPRISE_PURPOSE = ["상황 대처력 확인", "계획력과 창의력 확인", "순발력과 설득력 확인", "자기표현과 재치 확인"];
 function decodePayload(s){
   if (s.charAt(0) !== "Q") throw new Error("no marker");
   var json = LZString.decompressFromUint8Array(b43dec(s.slice(1)));
   if (!json) throw new Error("cut off");
   var p = JSON.parse(json);
   if (!p || !(p.q instanceof Array)) throw new Error("no questions");
+  for (var i = 0; i < p.q.length; i++){
+    var x = p.q[i];
+    if (x && x[0] === 4 && typeof x[1] === "number" && SURPRISE[x[1]]) p.q[i] = [4, SURPRISE[x[1]], SURPRISE_PURPOSE[Math.floor(x[1] / 10)]];
+  }
   return p;
 }
 
@@ -170,7 +238,7 @@ function renderSheet(root, p){
     var q = p.q[i] || [];
     var li = add(ol, el("li", "q-item"));
     add(li, el("span", "q-num", "Q" + (i + 1)));
-    add(li, el("span", "q-cat", CATS[q[0]] || "질문"));
+    add(li, el("span", q[0] === 4 ? "q-cat q-cat-pop" : "q-cat", CATS[q[0]] || "질문"));
     add(li, el("p", "q-text", q[1] || ""));
     if (q[2]) add(li, el("p", "q-note", "목적: " + q[2]));
   }
@@ -182,11 +250,44 @@ function message(root, title, body, diag){
   if (diag) add(root, el("p", "diag", diag));
 }
 
+// Anonymous counting with GoatCounter: only a fixed path is sent, never the questions after #.
+var GC = null, IS_TEST = false;
+function gcCount(path, title, isEvent){
+  if (!GC) return;
+  try {
+    var u = "https://" + GC + ".goatcounter.com/count?p=" + encodeURIComponent((IS_TEST ? "/test" : "") + path) +
+      "&t=" + encodeURIComponent(title || "") + (isEvent ? "&e=true" : "") +
+      "&s=" + encodeURIComponent(screen.width + "," + screen.height + "," + (window.devicePixelRatio || 1)) +
+      "&rnd=" + Math.random().toString(36).slice(2);
+    var img = new Image(); img.src = u;
+  } catch (e) {}
+}
+window.__gcCount = gcCount;
+function hashOf(s){ var h = 0; for (var i = 0; i < s.length; i++){ h = ((h << 5) - h + s.charCodeAt(i)) | 0; } return String(h); }
+function setupRating(raw){
+  var box = document.getElementById("rate"), btns = document.getElementById("rateBtns"), thanks = document.getElementById("rateThanks");
+  var key = "rated-" + hashOf(raw), done = false;
+  try { done = !!localStorage.getItem(key); } catch (e) {}
+  box.hidden = !GC;
+  btns.hidden = done; thanks.hidden = !done;
+  document.getElementById("rateEnds").hidden = done;
+  var list = btns.getElementsByTagName("button");
+  for (var i = 0; i < list.length; i++){
+    list[i].onclick = function(){
+      var score = this.getAttribute("data-score");
+      gcCount("/rating-" + score, "만족도 " + score + "점", true);
+      try { localStorage.setItem(key, "1"); } catch (e) {}
+      btns.hidden = true; thanks.hidden = false;
+      document.getElementById("rateEnds").hidden = true;
+    };
+  }
+}
 function show(){
   var sheet = document.getElementById("sheet"), foot = document.getElementById("foot");
   var bar = document.getElementById("pdfBar");
   var raw = getRaw();
   foot.hidden = true; bar.hidden = true; window.__sheet = null;
+  document.getElementById("rate").hidden = true;
   if (!raw){
     message(sheet, "예상 면접 질문지",
       "부스에서 받은 QR을 휴대폰 카메라로 찍으면 여기에 내 질문지가 열려요. QR을 찍었는데도 이 화면이 보이면, 사용한 QR 앱이 링크의 # 뒷부분을 잘라낸 거예요. 휴대폰 기본 카메라로 다시 찍어 주세요.");
@@ -197,6 +298,10 @@ function show(){
       renderSheet(sheet, p);
       document.title = (p.n || "방문자") + "님의 예상 면접 질문";
       foot.hidden = false; bar.hidden = false; window.__sheet = p;
+      GC = (typeof p.g === "string" && /^[a-z0-9][a-z0-9-]{1,47}$/.test(p.g)) ? p.g : null;
+      IS_TEST = !!p.x;
+      setupRating(raw);
+      gcCount("/sheet", "질문지 열람", false);
     } catch (e) {
       message(sheet, "질문지를 열 수 없어요",
         "QR이 끝까지 읽히지 않았어요. 부스 화면의 QR을 크게 띄운 뒤 휴대폰 기본 카메라로 다시 찍어 주세요.",
@@ -213,7 +318,7 @@ show();
 // PDF for visitors. Kept in its own script so the questions still show on browsers that cannot run it.
 (function(){
 "use strict";
-const CATS = ["성격", "경험", "직무", "압박"];
+const CATS = ["성격", "경험", "직무", "압박", "기습"];
 const $ = id => document.getElementById(id);
 const ready = new Promise(res => {
   if (document.readyState !== "loading") res();
@@ -258,9 +363,9 @@ function buildPdf(p, fonts){
   doc.addFileToVFS("pen.ttf", fonts.pen); doc.addFont("pen.ttf", "Pen", "normal");
   doc.setProperties({ title: pdfText((p.n || "방문자") + "님의 예상 면접 질문"), creator: pdfText(p.b || "면접관 질문 뽑기") });
 
-  const H = 297, LINE_X = 30, X = 36, R = 192, CW = R - X, NUM_R = 27, TOP = 18, BOTTOM = H - 32;
-  const QS = 11.5, QK = 1.4, NS = 15.5, NK = 1.1, PAD = 3;
-  const C = { ink: [27, 36, 54], muted: [91, 103, 125], pen: [42, 85, 200], rule: [220, 227, 238], margin: [195, 211, 242], marker: [255, 228, 92] };
+  const H = 297, LINE_X = 30, X = 36, R = 192, CW = R - X, NUM_R = 27, TOP = 15, BOTTOM = H - 31;
+  const QS = 10.8, QK = 1.36, NS = 13.5, NK = 1.08, PAD = 2.1;
+  const C = { ink: [27, 36, 54], muted: [91, 103, 125], pen: [42, 85, 200], rule: [220, 227, 238], margin: [195, 211, 242], marker: [255, 228, 92], pop: [255, 184, 204] };
   const PT = 0.3528;
   const set = (font, style, size, color) => { doc.setFont(font, style); doc.setFontSize(size); doc.setTextColor(color[0], color[1], color[2]); };
   const hOf = (lines, size, k) => lines.length * size * PT * k;
@@ -271,9 +376,9 @@ function buildPdf(p, fonts){
   newPage();
   let y = TOP;
   if (p.b){ set("Plex", "normal", 9, C.muted); put([pdfText(p.b)], X, y, 1.3); y += 6; }
-  set("Plex", "bold", 20, C.ink);
+  set("Plex", "bold", 18, C.ink);
   const title = doc.splitTextToSize(pdfText((p.n || "방문자") + "님의 예상 면접 질문"), CW);
-  put(title, X, y, 1.25); y += hOf(title, 20, 1.25) + 2;
+  put(title, X, y, 1.25); y += hOf(title, 18, 1.25) + 1.5;
   const meta = [];
   if (p.d) meta.push(p.d);
   if (p.f) meta.push("관심 분야는 " + p.f);
@@ -284,11 +389,11 @@ function buildPdf(p, fonts){
   }
   if (p.m){
     y += 3;
-    set("Pen", "normal", 18, C.pen);
+    set("Pen", "normal", 16, C.pen);
     const cl = doc.splitTextToSize(pdfText("“" + p.m + "”"), CW);
-    put(cl, X, y, 1.1); y += hOf(cl, 18, 1.1);
+    put(cl, X, y, 1.1); y += hOf(cl, 16, 1.1);
   }
-  y += 5; rule(y);
+  y += 3.5; rule(y);
 
   p.q.forEach((q, i) => {
     const cat = CATS[q[0]] || "질문";
@@ -304,7 +409,8 @@ function buildPdf(p, fonts){
     put(["Q" + (i + 1)], NUM_R, y - 0.3, 1.3, { align: "right" });
     set("Plex", "bold", 8.5, C.ink);
     const cw = doc.getTextWidth(cat);
-    doc.setFillColor(C.marker[0], C.marker[1], C.marker[2]);
+    const mk = q[0] === 4 ? C.pop : C.marker;
+    doc.setFillColor(mk[0], mk[1], mk[2]);
     doc.rect(X - 0.7, y + catH * 0.45, cw + 1.4, catH * 0.5, "F");
     put([cat], X, y, 1.3);
     y += catH + 1;
@@ -315,7 +421,7 @@ function buildPdf(p, fonts){
   });
 
   // answer tips and footer on the last page
-  const tip = "질문 아래 파란 글씨는 면접관이 그 질문으로 확인하려는 목적이에요. 목적을 떠올리면서 어떤 상황이었는지, 내가 무엇을 했는지, 결과가 어땠는지 순서로 30초 안에 말해 보세요.";
+  const tip = "질문 아래 파란 글씨는 면접관이 그 질문으로 확인하려는 목적이에요. 목적을 떠올리면서 어떤 상황이었는지, 내가 무엇을 했는지, 결과가 어땠는지 순서로 30초 안에 말해 보세요. 기습 질문은 정답이 없어요. 당황하지 말고 웃으면서 떠오르는 대로 말해 보세요.";
   set("Plex", "normal", 9, C.muted);
   const tl = doc.splitTextToSize(tip, CW);
   const tipH = 5 + hOf(tl, 9, 1.45);
